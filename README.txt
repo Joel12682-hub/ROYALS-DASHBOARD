@@ -1,6 +1,6 @@
 🏏 SupeRR Selector – Pressure Performance Dashboard
 
-A responsive cricket analytics dashboard developed for SupeRR Selector Season 2 – Round 1. This project focuses on identifying batters and bowlers who perform consistently under high-pressure situations in T20 cricket.
+A responsive cricket analytics dashboard developed for SupeRR Selector Season 2 – Round 1. This project focuses on identifying batters and bowlers who perform consistently under high-pressure situations.
 
 The dashboard features a Rajasthan Royals-inspired design using pink, royal blue, and white, providing a clean and interactive experience.
 
@@ -105,7 +105,7 @@ The objective is to use data-driven performance analysis to identify reliable T2
 
 ⚠️ Disclaimer
 
-The rankings are based on the supplied dataset and the defined pressure-performance methodology. They represent analytical results from the available data and should not be considered guarantees of future performance or official Rajasthan Royals selections.
+The rankings are based on the supplied dataset and the defined pressure-performance methodology. They represent analytical results from the available data and should not be considered guarantees of future performance.
 
 Developed for: SupeRR Selector – Season 2
 Round: Round 1 – Identify the Most Reliable Players Under Pressure

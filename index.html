@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RR Pressure Performance Dashboard</title>
+<style>
+:root{--pink:#e91e63;--pink2:#b31250;--blue:#174f8b;--ink:#172b4d;--muted:#68788e;--bg:#f6f7fb;--line:#e8eaf1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.5 Inter,Segoe UI,Arial,sans-serif;color:var(--ink)}
+header{padding:26px max(20px,calc((100% - 1120px)/2));color:white;background:linear-gradient(115deg,#a90d4b,#e91e63 52%,#174f8b)}
+.brand{font-size:11px;letter-spacing:.13em;font-weight:800;text-transform:uppercase;color:#ffe4ef}
+h1{font-size:clamp(25px,4vw,36px);margin:9px 0 3px;line-height:1.15}header p{margin:0;color:#ffeaf2}
+main{max-width:1120px;margin:22px auto;padding:0 18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:17px}
+.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;box-shadow:0 3px 12px #152d4808}
+.stat small{color:var(--muted);font-weight:650}.stat strong{display:block;font-size:24px;color:var(--blue)}
+nav{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 15px;border-radius:9px;font-weight:700;cursor:pointer}
+button.active{background:var(--pink);color:white;border-color:var(--pink)}
+.panel{display:none}.panel.active{display:block}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 11px}
+h2{margin:0;color:var(--blue);font-size:19px}.hint{margin:2px 0;color:var(--muted);font-size:12px}
+input{padding:9px 11px;border:1px solid var(--line);border-radius:9px;font:inherit;outline-color:var(--pink);min-width:200px}
+.tablebox{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+th{background:#fceaf1;color:#84304f;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+td,th{padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:hover{background:#f5f9ff}.rank{font-weight:800;color:var(--pink2)}.player{font-weight:750;color:var(--blue)}
+.note{margin-top:12px;padding:12px 14px;border-radius:11px;background:linear-gradient(100deg,#fff0f5,#eff6ff);border:1px solid #f4d7e2;font-size:13px}
+.note b{color:var(--pink2)}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:12px}.method h3{font-size:14px;color:var(--blue);margin:0 0 5px}.method p{margin:0;color:#4b5b70;font-size:13px}
+footer{font-size:11px;color:var(--muted);margin:15px 0 25px}
+@media(max-width:650px){.stats{grid-template-columns:1fr 1fr}.method{grid-template-columns:1fr}}
+@media(max-width:420px){.stats{grid-template-columns:1fr}input{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="brand">RR · SupeRR Selector · Season 2</div><h1>Pressure Performance</h1><p>Players who step up when the T20 chase gets tough.</p></header>
+<main>
+<div class="stats">
+ <div class="card stat"><small>Matches analysed</small><strong>837</strong></div>
+ <div class="card stat"><small>Pressure deliveries</small><strong>22,289</strong></div>
+ <div class="card stat"><small>Shortlisted players</small><strong>20</strong></div>
+</div>
+<nav><button class="active" data-tab="bat">Batters</button><button data-tab="bowl">Bowlers</button><button data-tab="method">Method</button></nav>
+<section id="bat" class="panel active">
+ <div class="head"><div><h2>Top 10 batters</h2><p class="hint">Ranked by pressure-performance uplift</p></div><input id="batSearch" placeholder="Search batter"></div>
+ <div class="card tablebox"><table id="batTable"><thead><tr><th>Rank</th><th>Player</th><th>Pressure runs</th><th>Balls</th><th>Matches</th><th>Pressure SR</th><th>Baseline SR</th><th>Pressure avg</th></tr></thead><tbody></tbody></table></div>
+ <div class="note"><b>Top model pick · Rinku Singh</b> — 401 pressure runs from 198 balls, with a pressure strike rate of 202.5.</div>
+</section>
+<section id="bowl" class="panel">
+ <div class="head"><div><h2>Top 10 bowlers</h2><p class="hint">Ranked by pressure-performance uplift</p></div><input id="bowlSearch" placeholder="Search bowler"></div>
+ <div class="card tablebox"><table id="bowlTable"><thead><tr><th>Rank</th><th>Player</th><th>Runs conceded</th><th>Balls</th><th>Wickets</th><th>Matches</th><th>Pressure econ</th><th>Baseline econ</th><th>Wkts / 24 balls</th></tr></thead><tbody></tbody></table></div>
+ <div class="note"><b>Top model pick · Yash Thakur</b> — 15 wickets from 115 pressure balls across 10 matches.</div>
+</section>
+<section id="method" class="panel method">
+ <div class="card"><h3>Pressure situation</h3><p>Second innings after 12 overs, with required run rate at least 9.0 or four or fewer wickets remaining.</p></div>
+ <div class="card"><h3>Player comparison</h3><p>Each player is compared with their own non-pressure baseline. Batting uses strike rate, boundary rate and average; bowling uses economy, wickets and dot balls.</p></div>
+ <div class="card"><h3>Sample safeguards</h3><p>Minimum pressure-ball, match and baseline-exposure filters are applied. Scores are moderated to reduce small-sample effects.</p></div>
+ <div class="card"><h3>Data scope</h3><p>Supplied IPL and T20I records from 2022–2026. Results describe this dataset and do not guarantee future performance.</p></div>
+</section>
+<footer>Analysis dashboard · Verify player availability and final selections before submission.</footer>
+</main>
+<script>
+const bat=[
+[1,"Rinku Singh",401,198,16,202.5,144.5,66.8],[2,"Sikandar Raza",215,110,15,195.5,128.4,19.5],
+[3,"Rovman Powell",579,313,28,185.0,137.6,30.5],[4,"Shreyas Iyer",254,124,11,204.8,150.0,63.5],
+[5,"Marco Jansen",172,104,16,165.4,105.8,15.6],[6,"David Miller",545,303,28,179.9,140.4,38.9],
+[7,"Akeal Hosein",169,110,15,153.6,104.5,18.8],[8,"Naman Dhir",178,82,8,217.1,163.9,44.5],
+[9,"Dhruv Jurel",305,167,16,182.6,142.9,43.6],[10,"Ashutosh Sharma",266,135,15,197.0,152.8,26.6]];
+const bowl=[
+[1,"Yash Thakur",195,115,15,10,10.17,10.49,3.13],[2,"Mohit Sharma",256,161,19,12,9.54,9.64,2.83],
+[3,"Shardul Thakur",220,141,13,14,9.36,10.55,2.21],[4,"Abrar Ahmed",90,114,9,15,4.74,7.02,1.89],
+[5,"Yuzvendra Chahal",513,348,38,38,8.84,8.57,2.62],[6,"Akeal Hosein",116,115,13,16,6.05,7.88,2.71],
+[7,"Mohammad Nawaz",76,76,9,12,6.00,7.22,2.84],[8,"Nitish Reddy",150,104,8,13,8.65,10.72,1.85],
+[9,"Cameron Green",141,107,8,13,7.91,9.81,1.79],[10,"Sufiyan Muqeem",99,93,9,8,6.39,6.53,2.32]];
+function render(rows,id,q){document.querySelector(`#${id} tbody`).innerHTML=rows.filter(r=>r[1].toLowerCase().includes(q.toLowerCase())).map(r=>r.map((v,i)=>`<td class="${i===0?'rank':i===1?'player':''}">${v}</td>`).join('')).map(x=>`<tr>${x}</tr>`).join('')}
+render(bat,'batTable','');render(bowl,'bowlTable','');
+document.getElementById('batSearch').addEventListener('input',e=>render(bat,'batTable',e.target.value));
+document.getElementById('bowlSearch').addEventListener('input',e=>render(bowl,'bowlTable',e.target.value));
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab))}));
+</script>
+</body></html>

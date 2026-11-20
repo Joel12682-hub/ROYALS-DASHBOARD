@@ -16,6 +16,14 @@ main{max-width:1120px;margin:22px auto;padding:0 18px}
 nav{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
 button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 15px;border-radius:9px;font-weight:700;cursor:pointer}
 button.active{background:var(--pink);color:white;border-color:var(--pink)}
+ nav button {
+    transition: 0.25s ease;
+}
+nav button:hover {
+    background: var(--pink);
+    color: white;
+    border-color: var(--pink);
+}
  .report-btn{
     background:var(--blue);
     color:white;
@@ -25,7 +33,9 @@ button.active{background:var(--pink);color:white;border-color:var(--pink)}
     font-weight:700;
     text-decoration:none;
     display:inline-block;
+    transition:0.25s ease;
 }
+
 .report-btn:hover{
     background:var(--pink);
     border-color:var(--pink);

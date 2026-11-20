@@ -16,6 +16,20 @@ main{max-width:1120px;margin:22px auto;padding:0 18px}
 nav{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
 button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 15px;border-radius:9px;font-weight:700;cursor:pointer}
 button.active{background:var(--pink);color:white;border-color:var(--pink)}
+ .report-btn{
+    background:var(--blue);
+    color:white;
+    border:1px solid var(--blue);
+    padding:9px 15px;
+    border-radius:9px;
+    font-weight:700;
+    text-decoration:none;
+    display:inline-block;
+}
+.report-btn:hover{
+    background:var(--pink);
+    border-color:var(--pink);
+}
 .panel{display:none}.panel.active{display:block}
 .head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 11px}
 h2{margin:0;color:var(--blue);font-size:19px}.hint{margin:2px 0;color:var(--muted);font-size:12px}
@@ -39,8 +53,17 @@ footer{font-size:11px;color:var(--muted);margin:15px 0 25px}
  <div class="card stat"><small>Matches analysed</small><strong>837</strong></div>
  <div class="card stat"><small>Pressure deliveries</small><strong>22,289</strong></div>
  <div class="card stat"><small>Shortlisted players</small><strong>20</strong></div>
-</div>
-<nav><button class="active" data-tab="bat">Batters</button><button data-tab="bowl">Bowlers</button><button data-tab="method">Method</button></nav>
+</div><nav>
+    <button class="active" data-tab="bat">Batters</button>
+    <button data-tab="bowl">Bowlers</button>
+    <button data-tab="method">Method</button>
+
+    <a href="./SUPERR%20SELECTOR%20SEASON%202.pdf"
+       target="_blank"
+       class="report-btn">
+       📄 View Full Report
+    </a>
+</nav>
 <section id="bat" class="panel active">
  <div class="head"><div><h2>Top 10 batters</h2><p class="hint">Ranked by pressure-performance uplift</p></div><input id="batSearch" placeholder="Search batter"></div>
  <div class="card tablebox"><table id="batTable"><thead><tr><th>Rank</th><th>Player</th><th>Pressure runs</th><th>Balls</th><th>Matches</th><th>Pressure SR</th><th>Baseline SR</th><th>Pressure avg</th></tr></thead><tbody></tbody></table></div>
